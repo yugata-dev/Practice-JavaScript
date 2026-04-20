@@ -1,0 +1,75 @@
+// ----> LET & CONST <---- //
+
+// --- NO 1 --- //
+ Di dalam konteks bengkel, kenapa biayaPendaftaran lebih cocok pakai const daripada let?
+ JAWABAN = "Const lebih cocok pada bagian pendaftaran karena pendaftaran ini cenderung tidak banyak berubahnilai nya"
+// --- NO 2 --- //
+ Misalkan ada variabel statusServis yang awalnya isinya "Proses", 
+ lalu setelah selesai berubah jadi "Selesai". Kamu bakal pakai let atau const 
+ untuk variabel itu? Jelaskan alasannya.
+ JAWABAN = "Let karena let itu cocok untuk nilai yang berubah2"
+
+// ----> OPERATOR <---- //
+// NO 1 //
+Apa bedanya operator && (DAN) dan || (ATAU)?
+JAWABAN : "Bedanya pada operator && jika kedua nilai true true akan true jika nilai hanya 1 true maka false sedangkan || jika nilai 1 true maka true tapi jika 2 false || ini false"
+
+// NO 2 //
+Kasus: Ada syarat diskon (beliOli === true && totalBelanja > 100000).
+Jika pelanggan beli oli tapi total belanjanya cuma Rp50.000, apakah dia dapat diskon? Kenapa?
+JAWABAN : false karena && ini kedua harus true kedua nya jika ingin mendapat true 
+
+---------------/// PROJECT 3 ///--------------
+
+// ----> Operator + If/Else <---- //
+
+function cekDiskonBengkel(beliOli, totalBelanja, punyaMember) {
+    let dapatDiskon = "";
+    if ((beliOli === true && totalBelanja > 100000) || punyaMember === true) {
+        dapatDiskon = "Selamat! Anda berhak mendapatkan diskon."
+    }
+    else {
+        dapatDiskon = "Maaf, harga normal."
+    }
+    console.log(dapatDiskon)
+}
+
+cekDiskonBengkel(false, 20000, true);
+cekDiskonBengkel(true, 150000, false);
+cekDiskonBengkel(false, 1000000, false);
+
+// ----> Penjelasan <---- //
+
+Cara Berpikirnya (Translasi ke Mesin)
+Bayangkan Bos Bengkel ngomong gini ke kamu:
+"Yugata, tolong kasih diskon ya ke pelanggan yang beli oli dan belanjanya di atas 100 ribu. Oiya, ATAU kasih diskon juga ke orang yang punya kartu member."
+
+Sekarang kita potong-potong instruksi Bos tadi jadi 3 bagian:
+
+Bagian 1: "Beli oli DAN belanjanya di atas 100 ribu"
+
+Kita terjemahkan: beliOli === true DAN totalBelanja > 100000.
+
+Karena operator DAN itu &&, maka jadinya:
+beliOli === true && totalBelanja > 100000
+
+Trik: Karena ini adalah "Satu Paket Syarat", kita wajib bungkus pakai tanda kurung () supaya mesin memprosesnya sebagai satu kesatuan.
+[Paket 1] = (beliOli === true && totalBelanja > 100000)
+
+Bagian 2: "Punya kartu member"
+
+Kita terjemahkan: punyaMember === true
+[Paket 2] = punyaMember === true
+
+Bagian 3: Kata penghubung "ATAU"
+
+Bos bilang yang masuk kriteria Paket 1 ATAU Paket 2 berhak dapat diskon.
+
+Operator ATAU adalah ||.
+
+Hasil Akhir (Menggabungkan Bautnya)
+Sekarang tinggal kita rakit:
+[Paket 1] || [Paket 2]
+
+Jadinya persis seperti kode yang bikin kamu pusing tadi:
+((beliOli === true && totalBelanja > 100000) || punyaMember === true)
